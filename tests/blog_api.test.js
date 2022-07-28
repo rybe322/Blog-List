@@ -147,6 +147,7 @@ test('testing if the unique identifier property of the blog post is name id', as
   expect(blogs.body[0].id).toBeDefined
 })
 
+
 afterAll(() => {
   mongoose.connection.close()
 })

@@ -5,7 +5,8 @@ Content-Type: application/json
   "title": "This is a test title from VS CODE",
   "author": "Author Test",
   "url": "www.test.com",
-  "likes": 420
+  "likes": 420,
+  "userId": "62e2e0b563f9ebcd522a3626"
 }
 ###
 POST http://localhost:3003/api/blogs
@@ -14,7 +15,8 @@ Content-Type: application/json
 {
   "title": "This is a test title without likes added",
   "author": "Author Test No likes",
-  "url": "www.test.com"
+  "url": "www.test.com",
+  "userId": "62e2e0b563f9ebcd522a3626"
 }
 ###
 POST http://localhost:3003/api/blogs
@@ -28,3 +30,12 @@ Content-Type: application/json
 GET http://localhost:3003/api/blogs
 ###
 GET http://localhost:3003/api/blogs/62e181a0fdd55fbe7669efed
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "username": "rybe322",
+  "name": "Ryan bennett",
+  "password": "test12345"
+}

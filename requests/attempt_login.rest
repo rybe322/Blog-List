@@ -1,0 +1,18 @@
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "root",
+  "password": "secret"
+}
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN1cGVyVXNlciIsImlkIjoiNjJlMmUxNTUzOTBjZTc0NWE3NDU0MWQwIiwiaWF0IjoxNjU5MDQyOTEzfQ.0XW5eRFcoXoM3FmVKvXjkaOi2-sIveh47mJlVMRhGkY
+
+{
+  "title": "This is a test title from VS CODE",
+  "author": "Author Test",
+  "url": "www.test.com",
+  "likes": 420
+}

@@ -6,33 +6,14 @@ const mongoose = require('mongoose')
 const logger = require('./utils/logger')
 const config = require('./utils/config')
 const Blog = require('./models/blog')
+require('dotenv').config()
 
-/*
-const mongoUrl = config.MONGODB_URI
-mongoose.connect(mongoUrl).then(response => logger.info("Connected to MongoDB")).catch(error => logger.error(error))
-
-app.use(cors())
-app.use(express.json())
-
-app.get('/api/blogs', (request, response) => {
-  Blog
-    .find({})
-    .then(blogs => {
-      response.json(blogs)
-    })
-})
-
-app.post('/api/blogs', (request, response) => {
-  const blog = new Blog(request.body)
-
-  blog
-    .save()
-    .then(result => {
-      response.status(201).json(result)
-    })
-})
-*/
 const PORT = config.PORT
+
+const MONGODB_URI = process.env.NODE_ENV === 'test'
+  ? process.env.TEST_MONGODB_URI
+  : process.env.MONGODB_URI
+
 app.listen(PORT, () => {
   logger.info(`Server running on port ${PORT}`)
 }) 

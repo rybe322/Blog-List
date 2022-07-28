@@ -128,11 +128,22 @@ test('deleting the first blog post', async () => {
   expect(titles).not.toContain(blogToDelete.title)  
 })
 
+test('updating the first blog posts likes', async () => {
+  const blogsAtStart = await helper.blogsInDb()
+  const blogToUpdate = blogsAtStart[0]
+  blogToUpdate.likes = blogToUpdate.likes + 1
+  await api
+    .put(`/api/blogs/${blogToUpdate.id}`)
+    .send(blogToUpdate)
+    .expect(200)
+  const blogsAtEnd = await helper.blogsInDb()
+  expect(blogsAtEnd[0].likes).toEqual(blogToUpdate.likes)
+})
+
 test('testing if the unique identifier property of the blog post is name id', async() => {
   const blogs = await api
     .get('/api/blogs')
     
-  console.log('blogs', blogs.body[0])
   expect(blogs.body[0].id).toBeDefined
 })
 

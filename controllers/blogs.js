@@ -9,6 +9,8 @@ const jwt = require('jsonwebtoken')
 const getTokenFrom = request => {
   const authorization = request.get('authorization')
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+    console.log('authorization from getTokenFrom', authorization)
+    console.log('authorization.substring(7): ', authorization.substring(7))
     return authorization.substring(7)
   }
   return null
@@ -88,12 +90,34 @@ blogsRouter.put('/:id', async (request, response, next) => {
 })
   
 blogsRouter.delete('/:id', async (request, response, next) => {
+  console.log('request from delete', request)
+  
+  const token = getTokenFrom(request)
+  const decodedToken = jwt.verify(token, process.env.SECRET)
   try {
+    console.log('token from delete', token)
+    console.log('decodedToken: ', decodedToken)
+    if (!decodedToken.id) {
+      return response.status(401).json({ error: 'token missing or invalid'})
+    }
+  } catch(exception) {
+    return response.status(400).json({ error: 'bad request'})
+  }
+
+  try {
+    const user = await User.findById(decodedToken.id)
+    const blog = await Blog.findById(request.params.id)
+    console.log('user: ', user.id.toString())
+    console.log('blog: ', blog.user.toString())
+    
     await Blog.findByIdAndRemove(request.params.id)
     response.status(204).end()
+    
   } catch (exception) {
     next(exception)
   }
+
+
 })
 
 module.exports = blogsRouter

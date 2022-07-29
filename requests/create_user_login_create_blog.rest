@@ -1,0 +1,33 @@
+GET http://localhost:3003/api/users
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "username": "User",
+  "name": "New User's name",
+  "password": "Test123"
+}
+###
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "User",
+  "password": "Test123"
+}
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5ldyBVc2VyJ3MgbmFtZSIsImlkIjoiNjJlM2ZjNTMzMzBiY2M3NzE3OTE5NTM0IiwiaWF0IjoxNjU5MTEwODk3LCJleHAiOjE2NTkxMTQ0OTd9.1dB6i4UUNYDg1KaGIJUuAfqnNVx6tr6_yEw-ojtIKsM
+
+{
+  "title": "This is a test title testing user deletion",
+  "author": "Author Test",
+  "url": "www.test.com",
+  "likes": 420
+}
+###
+DELETE http://localhost:3003/api/blogs/62e40602a2710cc33091fc2e
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5ldyBVc2VyJ3MgbmFtZSIsImlkIjoiNjJlM2ZjNTMzMzBiY2M3NzE3OTE5NTM0IiwiaWF0IjoxNjU5MTEwODk3LCJleHAiOjE2NTkxMTQ0OTd9.1dB6i4UUNYDg1KaGIJUuAfqnNVx6tr6_yEw-ojtIKsM

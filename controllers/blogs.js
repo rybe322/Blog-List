@@ -90,7 +90,6 @@ blogsRouter.put('/:id', async (request, response, next) => {
 })
   
 blogsRouter.delete('/:id', async (request, response, next) => {
-  console.log('request from delete', request)
   
   const token = getTokenFrom(request)
   const decodedToken = jwt.verify(token, process.env.SECRET)
@@ -107,8 +106,8 @@ blogsRouter.delete('/:id', async (request, response, next) => {
   try {
     const user = await User.findById(decodedToken.id)
     const blog = await Blog.findById(request.params.id)
-    console.log('user: ', user.id.toString())
-    console.log('blog: ', blog.user.toString())
+    //console.log('user: ', user.id.toString())
+    //console.log('blog: ', blog.user.toString())
     
     await Blog.findByIdAndRemove(request.params.id)
     response.status(204).end()

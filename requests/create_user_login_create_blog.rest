@@ -31,3 +31,10 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5ld
 DELETE http://localhost:3003/api/blogs/62e40602a2710cc33091fc2e
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5ldyBVc2VyJ3MgbmFtZSIsImlkIjoiNjJlM2ZjNTMzMzBiY2M3NzE3OTE5NTM0IiwiaWF0IjoxNjU5MTEwODk3LCJleHAiOjE2NTkxMTQ0OTd9.1dB6i4UUNYDg1KaGIJUuAfqnNVx6tr6_yEw-ojtIKsM
+###
+PUT http://localhost:3003/api/blogs/62e2e1522c131d05facfc268
+Content-Type: application/json
+
+{
+  "likes": 5
+}

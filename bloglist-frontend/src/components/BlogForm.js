@@ -73,6 +73,7 @@ const BlogForm = ({ createBlog }) => {
       <form onSubmit={addBlog}>
         <b>Title:</b>
         <input
+          id='titleInput'
           value={newTitle}
           onChange={({ target }) => setNewTitle(target.value)}
           placeholder='write the title here'
@@ -80,23 +81,26 @@ const BlogForm = ({ createBlog }) => {
         <br />
         <b>AUTHOR: </b>
         <input
+          id='authorInput'
           value={newAuthor}
           onChange={({ target }) => setNewAuthor(target.value)}
         />
         <br />
         <b>URL: </b>
         <input
+          id='urlInput'
           value={newUrl}
           onChange={({ target }) => setNewUrl(target.value)}
         />
         <br />
         <b>LIKES: </b>
         <input
+          id='likesInput'
           value={newLikes}
           onChange={({ target }) => setNewLikes(target.value)}
         />
         <br />
-        <button type='submit'>save</button>
+        <button id='submit-blog-button' type='submit'>save</button>
       </form>
     </div>
   )
